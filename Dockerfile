@@ -13,7 +13,7 @@ COPY package.json package.json
 COPY package-lock.json package-lock.json
 
 # installs the project's npm packages
-RUN npm ci
+RUN npm install
 
 # directories are copied into the container
 COPY public/ public
