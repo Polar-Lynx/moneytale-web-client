@@ -6,7 +6,7 @@
 FROM node:23.4.0-bookworm-slim AS build
 
 # sets the working directory for commands added in the Dockerfile
-WORKDIR /moneytale-reactjs-client
+WORKDIR /app
 
 # copies the project's npm packages into the working directory
 COPY package.json package.json
@@ -21,6 +21,9 @@ COPY src/ src
 
 # builds the project
 RUN npm run build
+
+# exposes the port that the app will run on
+EXPOSE 3000
 
 # starts the Node.js application installed in the container
 CMD ["npm", "start"]
