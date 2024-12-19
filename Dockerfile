@@ -3,7 +3,7 @@
 #################################
 
 # pushes the base image from the official Node.js remote repository
-FROM node:22.7-bookworm-slim AS build
+FROM node:23.4.0-bookworm-slim AS build
 
 # sets the working directory for commands added in the Dockerfile
 WORKDIR /moneytale-reactjs-client
