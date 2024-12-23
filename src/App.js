@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 
 // components
 import HomePageView from './components/HomePage/HomePageView';
+import AccountSelectionView from "./components/AccountSelection/AccountSelectionView";
 
 
 const App = () => {
@@ -13,6 +14,8 @@ const App = () => {
             <Routes>
                 {/* couples a URL segment to a component */}
                 <Route path="/" element={<HomePageView />} />
+
+                <Route path="/account-selection" element={<AccountSelectionView />} />
             </Routes>
         </BrowserRouter>
     );

@@ -1,6 +1,8 @@
+// utilities
 import SendIcon from '@mui/icons-material/Send';
 import { Box, Button, Container, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router";
 
 
 const HomePageView = () => {
@@ -15,11 +17,17 @@ const HomePageView = () => {
                 </Typography>
 
                 <Typography variant="h3" gutterBottom>
-                    Your Money has a Story to tell...
+                    Let your money do the talking...
                 </Typography>
 
                 {/* user interaction via a button tap */}
-                <Button variant="contained" color="primary" endIcon={<SendIcon />}>
+                <Button
+                    color="primary"
+                    component={Link}
+                    endIcon={<SendIcon />}
+                    to="/account-selection"
+                    variant="contained"
+                >
                     Get Started
                 </Button>
             </Box>
