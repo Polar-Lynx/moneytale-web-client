@@ -1,11 +1,13 @@
-// utilities
+/********************************************************************************
+*                       UTILITIES                                               *
+********************************************************************************/
 import SendIcon from '@mui/icons-material/Send';
 import { Box, Button, Container, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router";
 
 
-const HomePageView = () => {
+export const HomePageView = () => {
     return (
         // centers the content horizontally
         <Container maxWidth="sm">
@@ -34,5 +36,3 @@ const HomePageView = () => {
         </Container>
     );
 };
-
-export default HomePageView;

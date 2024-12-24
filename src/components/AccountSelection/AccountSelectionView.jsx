@@ -1,10 +1,24 @@
-// utilities
+/********************************************************************************
+*                       UTILITIES                                               *
+********************************************************************************/
 import SendIcon from '@mui/icons-material/Send';
-import { Box, Button, Container, Divider, TextField, Typography } from "@mui/material";
-import React from "react";
+import { Box, Button, Container, Divider, Modal, TextField, Typography } from "@mui/material";
+import React, { useState } from "react";
 
 
-const AccountSelectionView = () => {
+/********************************************************************************
+*                       COMPONENTS                                              *
+********************************************************************************/
+import { AccountCreationView } from '../AccountCreation/AccountCreationView';
+
+
+export const AccountSelectionView = () => {
+    /********************************************************************************
+    *                       REACT HOOKS                                             *
+    ********************************************************************************/
+    const [signUpModalDisplayed, setSignUpModalDisplayed] = useState(false);
+
+
     return (
         // centers the content horizontally
         <Container maxWidth="sm">
@@ -15,25 +29,9 @@ const AccountSelectionView = () => {
                     MoneyTale
                 </Typography>
 
-                <Typography variant="h3" gutterBottom>
-                    Enter Account Details or Sign Up
+                <Typography variant="h4" gutterBottom>
+                    Enter Account Info or Sign Up
                 </Typography>
-
-                {/* form to create a new user */}
-                <Box sx={{ textAlign: "center", padding: 3, border: "1px solid #ccc", borderRadius: 2 }}>
-                    <Typography variant="h5" gutterBottom>
-                        New User
-                    </Typography>
-
-                    <Button variant="contained" color="primary" endIcon={<SendIcon />}>
-                        Sign Up
-                    </Button>
-                </Box>
-
-                {/* provides a line to reinforce visual hierarchy */}
-                <Divider sx={{ my: 3 }}>
-                    OR
-                </Divider>
 
                 {/* form to log in an existing user */}
                 <Box sx={{ textAlign: "center", padding: 3, border: "1px solid #ccc", borderRadius: 2 }}>
@@ -46,13 +44,37 @@ const AccountSelectionView = () => {
 
                     <TextField label="Password" type="password" fullWidth margin="normal" variant="outlined" />
 
-                    <Button variant="contained" color="primary" endIcon={<SendIcon sx={{ mt: 2 }} />}>
+                    <Button variant="contained" color="primary" endIcon={<SendIcon />}>
                         Log In
                     </Button>
-                </Box>                
+                </Box>
+
+                {/* provides a line to reinforce visual hierarchy */}
+                <Divider sx={{ my: 3 }}>
+                    OR
+                </Divider>
+
+                {/* button to open form to create a new user */}
+                <Box sx={{ textAlign: "center", padding: 3, border: "1px solid #ccc", borderRadius: 2 }}>
+                    <Typography variant="h5" gutterBottom>
+                        New User
+                    </Typography>
+
+                    <Button variant="contained" color="primary" endIcon={<SendIcon />} onClick={() => setSignUpModalDisplayed(true)}>
+                        Sign Up
+                    </Button>
+                </Box>
+
+                {/* modal to handle user creation */}
+                <Modal
+                    open={signUpModalDisplayed}
+                    onClose={() => setSignUpModalDisplayed(false)}
+                    aria-labelledby="sign-up-modal-title"
+                    aria-describedby="sign-up-modal-description"
+                >
+                    <AccountCreationView/>
+                </Modal>
             </Box>
         </Container>
     );
 };
-
-export default AccountSelectionView;

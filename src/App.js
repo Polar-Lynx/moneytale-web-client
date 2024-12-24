@@ -1,16 +1,20 @@
-// utilities
+/********************************************************************************
+*                       UTILITIES                                               *
+********************************************************************************/
 import { BrowserRouter, Route, Routes } from "react-router";
 
 
-// components
-import HomePageView from './components/HomePage/HomePageView';
-import AccountSelectionView from "./components/AccountSelection/AccountSelectionView";
+/********************************************************************************
+*                       COMPONENTS                                              *
+********************************************************************************/
+import { HomePageView } from './components/HomePage/HomePageView';
+import { AccountSelectionView } from "./components/AccountSelection/AccountSelectionView";
 
 
-const App = () => {
+export const App = () => {
     return (
         <BrowserRouter>
-            {/* couple URL segments to UI elements */}
+            {/* couples URL segments to UI elements */}
             <Routes>
                 {/* couples a URL segment to a component */}
                 <Route path="/" element={<HomePageView />} />
@@ -20,5 +24,3 @@ const App = () => {
         </BrowserRouter>
     );
 };
-
-export default App;
