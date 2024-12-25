@@ -1,8 +1,8 @@
-# moneytale
-Wealth tracking service
+# moneytale-web-client
+Wealth tracking service's web client
 
 # Getting Started with Create React App
-Used "npx create-react-app moneytale" command to create React App files.
+Used "npx create-react-app moneytale-web-client" command to create React App files.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
