@@ -3,20 +3,34 @@
 ********************************************************************************/
 import SendIcon from '@mui/icons-material/Send';
 import { Box, Button, Container, Divider, Modal, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 
 
 /********************************************************************************
 *                       COMPONENTS                                              *
 ********************************************************************************/
-import { AccountCreationView } from '../AccountCreation/AccountCreationView';
+import { AccountSelectionViewModel } from "./AccountSelectionViewModel";
+import { AccountCreationView } from "../AccountCreation/AccountCreationView";
 
 
 export const AccountSelectionView = () => {
     /********************************************************************************
-    *                       REACT HOOKS                                             *
+    *                       VIEWMODEL                                               *
     ********************************************************************************/
-    const [signUpModalDisplayed, setSignUpModalDisplayed] = useState(false);
+    const {
+        // form data
+        existingUserFormData,
+        // validation errors
+        inputErrors,
+        // modal's display state
+        signUpModalDisplayed,
+        // handles the input changes in the user verification form
+        handleInputChange,
+        // handles the submission of the user verification form
+        handleLogInFormSubmission,
+        // toggles the display state of a modal
+        setSignUpModalDisplayed
+    } = AccountSelectionViewModel();
 
 
     return (
@@ -40,11 +54,39 @@ export const AccountSelectionView = () => {
                     </Typography>
 
                     {/* lets users enter and edit text */}
-                    <TextField label="Email" fullWidth margin="normal" variant="outlined" />
+                    <TextField
+                        error={inputErrors.email}
+                        fullWidth
+                        helperText={inputErrors.email && "Email is required"}
+                        label="Email"
+                        margin="normal"
+                        name="email"
+                        onChange={handleInputChange}
+                        required
+                        value={existingUserFormData.email}
+                        variant="outlined"
+                    />
 
-                    <TextField label="Password" type="password" fullWidth margin="normal" variant="outlined" />
+                    <TextField
+                        error={inputErrors.password}
+                        fullWidth
+                        helperText={inputErrors.password && "Password is required"}
+                        label="Password"
+                        margin="normal"
+                        name="password"
+                        onChange={handleInputChange}
+                        required
+                        type="password"
+                        value={existingUserFormData.password}
+                        variant="outlined"
+                    />
 
-                    <Button variant="contained" color="primary" endIcon={<SendIcon />}>
+                    <Button
+                        color="primary"
+                        endIcon={<SendIcon />}
+                        onClick={handleLogInFormSubmission}
+                        variant="contained"
+                    >
                         Log In
                     </Button>
                 </Box>

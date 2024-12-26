@@ -9,16 +9,16 @@ import React from "react";
 export const DashboardView = ({ financialGoals, latestIncomeRecords, latestSpendingRecords, userName }) => {
     return (
         <Box sx={{ textAlign: "center", padding: 5 }}>
-            <Typography variant="h2" gutterBottom>
+            <Typography variant="h1" gutterBottom>
                 MoneyTale
             </Typography>
 
             <Typography variant="h3" gutterBottom>
-                {userName}, Welcome to your Dashboard!
+                Welcome to your Dashboard {userName}!
             </Typography>
 
             {/* displays the user's financial goals if any exist */}
-            <Box sx={{ mb: 4 }}>
+            <Box sx={{ mb: 4, paddingTop: 3 }}>
                 <Typography variant="h4" gutterBottom>
                     Financial Goals
                 </Typography>
