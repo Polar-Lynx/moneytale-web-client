@@ -67,8 +67,8 @@ export const AccountCreationView = () => {
             {/* input field for user's email */}
             <TextField 
                 error={inputErrors.email}
-                helperText={inputErrors.email && "Email is required"}
                 fullWidth
+                helperText={inputErrors.email && "Email is required"}
                 label="Email"
                 margin="normal"
                 name="email"
@@ -81,8 +81,8 @@ export const AccountCreationView = () => {
             {/* input field for user's password */}
             <TextField 
                 error={inputErrors.password}
-                helperText={inputErrors.password && "Password is required"}
                 fullWidth
+                helperText={inputErrors.password && "Password is required"}
                 label="Password"
                 margin="normal"
                 name="password"
