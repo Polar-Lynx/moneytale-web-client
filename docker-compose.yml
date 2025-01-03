@@ -1,5 +1,11 @@
 services:
   -moneytale-react-app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: moneytale-web-client
+    environment:
+      - REACT_APP_SERVER_ADDRESS=${REACT_APP_SERVER_ADDRESS}
     ports:
       - "3000:3000"
+    restart: unless-stopped
