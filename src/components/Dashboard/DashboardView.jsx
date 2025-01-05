@@ -2,11 +2,27 @@
 *                       UTILITIES                                               *
 ********************************************************************************/
 import { Box, Button, Card, CardContent, Grid2, Typography } from "@mui/material";
-import PropTypes from "prop-types";
 import React from "react";
 
 
-export const DashboardView = ({ financialGoals, latestIncomeRecords, latestSpendingRecords, userName }) => {
+/********************************************************************************
+*                       COMPONENTS                                              *
+********************************************************************************/
+import { DashboardViewModel } from "./DashboardViewModel";
+
+
+export const DashboardView = () => {
+    /********************************************************************************
+    *                       VIEWMODEL                                               *
+    ********************************************************************************/
+    const {
+        financialGoals,
+        latestIncomeRecords ,
+        latestSpendingRecords,
+        userName
+    } = DashboardViewModel();
+
+
     return (
         <Box sx={{ textAlign: "center", padding: 5 }}>
             <Typography variant="h1" gutterBottom>
@@ -133,35 +149,4 @@ export const DashboardView = ({ financialGoals, latestIncomeRecords, latestSpend
             </Grid2>
         </Box>
     );
-};
-
-
-/********************************************************************************
-*                       PROP-TYPES                                              *
-********************************************************************************/
-DashboardView.propTypes = {
-    financialGoals: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired
-        })
-    ).isRequired,
-    latestIncomeRecords: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-            amount: PropTypes.number.isRequired,
-            date: PropTypes.string.isRequired
-        })
-    ).isRequired,
-    latestSpendingRecords: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-            amount: PropTypes.number.isRequired,
-            date: PropTypes.string.isRequired
-        })
-    ).isRequired,
-    userName: PropTypes.string.isRequired
 };
