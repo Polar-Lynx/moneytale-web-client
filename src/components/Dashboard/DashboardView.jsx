@@ -24,22 +24,50 @@ export const DashboardView = () => {
 
 
     return (
-        <Box sx={{ textAlign: "center", padding: 5 }}>
-            <Typography variant="h1" gutterBottom>
+        <Box sx={{
+            background: "linear-gradient(135deg, #a8e063, #56ab2f)",
+            color: "#fff",
+            minHeight: "100vh",
+            padding: 5,
+            textAlign: "center"
+        }}>
+            <Typography
+                gutterBottom
+                sx={{
+                    fontWeight: "bold",
+                    textShadow: "2px 2px 8px rgba(0, 0, 0, 0.4)"
+                }}
+                variant="h1"
+            >
                 MoneyTale
             </Typography>
 
-            <Typography variant="h3" gutterBottom>
+            <Typography
+                gutterBottom
+                sx={{
+                    fontWeight: "medium",
+                    mb: 5,
+                    textShadow: "1px 1px 5px rgba(0, 0, 0, 0.3)"
+                }}
+                variant="h3"
+            >
                 Welcome to your Dashboard {userName}!
             </Typography>
 
             {/* displays the user's financial goals if any exist */}
             <Box sx={{ mb: 4, paddingTop: 3 }}>
-                <Typography variant="h4" gutterBottom>
+                <Typography
+                    gutterBottom
+                    sx={{
+                        fontWeight: "bold",
+                        textShadow: "1px 1px 5px rgba(0, 0, 0, 0.3)"
+                    }}
+                    variant="h4"
+                >
                     Financial Goals
                 </Typography>
 
-                <Grid2 container spacing={2}>
+                <Grid2 container spacing={2} justifyContent={"space-evenly"}>
                     {financialGoals.length > 0 ? (
                         financialGoals.map((goal) => (
                             <Grid2 xs={12} sm={4} key={goal.id}>
