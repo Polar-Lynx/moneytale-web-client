@@ -1,6 +1,7 @@
 /********************************************************************************
 *                       UTILITIES                                               *
 ********************************************************************************/
+import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -8,7 +9,8 @@ import { useNavigate } from "react-router";
 /********************************************************************************
 *                       COMPONENTS                                              *
 ********************************************************************************/
-import { initialFormData, initialInputErrors } from "./AccountSelectionModel"
+import { initialFormData, initialInputErrors } from "./AccountSelectionModel";
+import { useDashboardContext } from "../Dashboard/DashboardContext";
 
 
 export const AccountSelectionViewModel = () => {
@@ -26,6 +28,9 @@ export const AccountSelectionViewModel = () => {
 
     // tracks whether a modal is open
     const [signUpModalDisplayed, setSignUpModalDisplayed] = useState(false);
+
+    // sets the dashboard data context
+    const { setDashboardData } = useDashboardContext();
 
 
     /********************************************************************************
@@ -87,17 +92,46 @@ export const AccountSelectionViewModel = () => {
             return;
         };
 
-        // submits form data
-        console.log("Submitted Data:", existingUserFormData);
+        const fetchDashboardData = async () => {
+            const controller = new AbortController();
 
-        // handles response
-        if (true) {
-            // resets the form
-            setExistingUserFormData(initialFormData);
+            try {
+                // submits form data
+                const response = await axios.get(
+                    `${process.env.REACT_APP_SERVER_ADDRESS}/dashboard?email=${existingUserFormData.email}`,
+                    { signal: controller.signal }
+                );
 
-            // navigates to the user's dashboard
-            navigate("/dashboard");
+                // updates context with the fetched data
+                setDashboardData({
+                    financialGoals: [{ id: "1", title: "Cut Costs", description: "Spend less money eating outside!"}, { id: "2", title: "Save Money", description: "Use Coupon apps."}, { id: "3", title: "Pay Back Loans", description: "Use any leftover money to pay back borrowed money."}],
+                    latestIncomeRecords: [{ id: "1", description: "Textbook Sale", amount: "32.00", date: "2024-12-23"}, { id: "2", description: "KFC Pay", amount: "804.86", date: "2024-12-30"}],
+                    latestSpendingRecords: [{ id: "1", description: "7-Eleven", amount: "52.45", date: "2024-12-23"}, { id: "2", description: "Walmart", amount: "134.97", date: "2024-12-30"}, { id: "3", description: "Planet Fitness", amount: "32.47", date: "2025-1-1"}],
+                    userName: response.data
+                });
+            } catch (error) {
+                if (axios.isCancel(error)) {
+                    // handles request errors
+                    console.log("Request canceled", error.message);
+                } else if (error.response) {
+                    // handles response errors
+                    console.error("Error status:", error.response.status);
+                } else {
+                    // handles other errors
+                    console.error("Network error:", error.message);
+                }
+            } finally {
+                // resets the form
+                setExistingUserFormData(initialFormData);
+            }
+
+            // controller.abort();
         };
+
+        fetchDashboardData();
+
+        // navigates to the user's dashboard
+        navigate("/dashboard");
     };
 
 
