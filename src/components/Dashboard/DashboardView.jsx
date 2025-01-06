@@ -71,7 +71,11 @@ export const DashboardView = () => {
                     {financialGoals.length > 0 ? (
                         financialGoals.map((goal) => (
                             <Grid2 xs={12} sm={4} key={goal.id}>
-                                <Card sx={{ p: 2 }}>
+                                <Card sx={{
+                                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                                    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                                    p: 2
+                                }}>
                                     <CardContent>
                                         <Typography variant="h6">
                                             {goal.title}
