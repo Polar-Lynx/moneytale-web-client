@@ -2,24 +2,27 @@
 Wealth tracking service's web client
 
 
-# moneytale-server
+## moneytale-server
 https://github.com/Polar-Lynx/moneytale-server
 
 
-# Dashboard
+## Components
+### Landing Page
+![HomePage Snapshot](snapshots/HomePageSnapshot.png)
+
+
+### Dashboard
 ![Dashboard Snapshot](snapshots/DashboardSnapshot.png)
 
 
-### Docker
-To build the application's docker container, the command "docker-compose build --no-cache".
-
-To serve the application, the command "docker-compose up".
-
-To ensure the application is down and cleaned up, the command "docker-compose down", or "docker-compose down --volumes" to clear storage.
+## Docker
+To build the application's docker container, the command `docker-compose build --no-cache`.
+To serve the application, the command `docker-compose up`.
+To ensure the application is down and cleaned up, the command `docker-compose down`, or `docker-compose down --volumes` to clear storage.
 
 
 # Getting Started with Create React App
-Used "npx create-react-app moneytale-web-client" command to create React App files.
+Used `npx create-react-app moneytale-web-client` command to create React App files.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
