@@ -6,6 +6,18 @@ Wealth tracking service's web client
 https://github.com/Polar-Lynx/moneytale-server
 
 
+# Dashboard
+![Dashboard Snapshot](snapshots/DashboardSnapshot.png)
+
+
+### Docker
+To build the application's docker container, the command "docker-compose build --no-cache".
+
+To serve the application, the command "docker-compose up".
+
+To ensure the application is down and cleaned up, the command "docker-compose down", or "docker-compose down --volumes" to clear storage.
+
+
 # Getting Started with Create React App
 Used "npx create-react-app moneytale-web-client" command to create React App files.
 
@@ -81,11 +93,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 ### `npm run build` fails to minify
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-
-### Docker
-To build the application's docker container, the command "docker-compose build --no-cache".
-
-To serve the application, the command "docker-compose up".
-
-To ensure the application is down and cleaned up, the command "docker-compose down", or "docker-compose down --volumes" to clear storage.
