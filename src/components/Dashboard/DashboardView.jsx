@@ -67,7 +67,7 @@ export const DashboardView = () => {
                     Financial Goals
                 </Typography>
 
-                <Grid2 container spacing={2} justifyContent={"space-evenly"}>
+                <Grid2 container spacing={2} justifyContent={"space-evenly"} sx={{ border: "4px solid #E0E2E4", padding: 2 }}>
                     {financialGoals.length > 0 ? (
                         financialGoals.map((goal) => (
                             <Grid2 xs={12} sm={4} key={goal.id}>
@@ -125,9 +125,17 @@ export const DashboardView = () => {
 
                     {/* button to view the full list of spending records */}
                     <Button
-                        color="primary"
                         fullWidth
-                        sx={{ mt: 2 }}
+                        sx={{
+                            background: "#ffcc00",
+                            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
+                            color: "#000",
+                            fontWeight: "bold",
+                            mt: 2,
+                            "&:hover": {
+                                background: "#ffaa00"
+                            }
+                        }}
                         variant="contained"
                     >
                         View All Spending
@@ -166,9 +174,17 @@ export const DashboardView = () => {
 
                     {/* button to view the full list of income records */}
                     <Button
-                        color="primary"
                         fullWidth
-                        sx={{ mt: 2 }}
+                        sx={{
+                            background: "#ffcc00",
+                            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
+                            color: "#000",
+                            fontWeight: "bold",
+                            mt: 2,
+                            "&:hover": {
+                                background: "#ffaa00"
+                            }
+                        }}
                         variant="contained"
                     >
                         View All Income
